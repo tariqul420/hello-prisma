@@ -15,28 +15,41 @@ datasource db {
 }
 
 // Define data models here
-model Post {
-  id        Int      @id @default(autoincrement())
+model User {
+  id String @id @unique @default(ulid())
+  name String
+  email String @unique
+  password String
+  watchlists Movie[] @relation("UserWatchList")
+  reviews Review[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+  @@map("users")
 }
 
-model Profile {
-  id     Int     @id @default(autoincrement())
-  bio    String?
-  user   User    @relation(fields: [userId], references: [id])
-  userId Int     @unique
+model Movie {
+  id String @id @unique @default(ulid())
+  title String
+  description String?
+  releaseDate DateTime
+  director String?
+  genre String?
+  watchlists User[] @relation("UserWatchList")
+  reviews Review[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("movies")
 }
 
-model User {
-  id      Int      @id @default(autoincrement())
-  email   String   @unique
-  name    String?
-  posts   Post[]
-  profile Profile?
+model Review {
+  id String @id @unique @default(ulid())
+  comment String
+  rating Float
+  movie Movie @relation(fields: [movieId], references: [id])
+  movieId String
+  user User @relation(fields: [userId], references: [id])
+  userId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  @@map("reviews")
 }
