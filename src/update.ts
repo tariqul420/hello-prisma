@@ -10,6 +10,7 @@ async function main() {
     },
     data: {
       name: 'Tariqul Islam (Developer)',
+      age: '17 Years',
     },
   });
   console.log(updateUser, 'Update user name');
