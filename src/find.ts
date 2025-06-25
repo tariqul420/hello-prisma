@@ -27,23 +27,34 @@ async function main() {
   console.log(findFirst, 'Find First.');
 
   // find a throw error
-  const findAndError = await prisma.user.findUniqueOrThrow({
+  // const findAndError = await prisma.user.findUniqueOrThrow({
+  //   where: {
+  //     email: 'shakil@example.com',
+  //   },
+  //   select: {
+  //     name: true,
+  //     email: true,
+  //     watchlist: {
+  //       select: {
+  //         title: true,
+  //         genre: true,
+  //       },
+  //     },
+  //   },
+  // });
+
+  // console.log(findAndError, 'Find a user and throw error');
+
+  // find whose age is less then 18
+  const findByAge = await prisma.user.findMany({
     where: {
-      email: 'shakil@example.com',
-    },
-    select: {
-      name: true,
-      email: true,
-      watchlist: {
-        select: {
-          title: true,
-          genre: true,
-        },
+      age: {
+        lt: 18,
       },
     },
   });
 
-  console.log(findAndError, 'Find a user and throw error');
+  console.log(findByAge, 'find whose age is less then 18');
 }
 
 main();
