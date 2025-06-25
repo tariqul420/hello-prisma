@@ -12,6 +12,7 @@ async function main() {
     where: {
       email: 'tariqul.dev7@gmail.com',
     },
+    include: { watchlist: true },
   });
 
   console.log(findUser, 'Find a user.');
@@ -28,7 +29,17 @@ async function main() {
   // find a throw error
   const findAndError = await prisma.user.findUniqueOrThrow({
     where: {
-      email: 'tariqul.dev7@gmail.com',
+      email: 'shakil@example.com',
+    },
+    select: {
+      name: true,
+      email: true,
+      watchlist: {
+        select: {
+          title: true,
+          genre: true,
+        },
+      },
     },
   });
 
