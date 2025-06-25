@@ -5,13 +5,12 @@ const prisma = new PrismaClient();
 async function main() {
   // const createUser = await prisma.user.create({
   //   data: {
-  //     name: 'Tariqul Islam 2',
-  //     email: 'tariqul8.dev8@gmail.com',
+  //     name: 'Tariqul Islam',
+  //     email: 'tariqul7.dev8@gmail.com',
   //     password: '123456',
   //   },
   // });
   // console.log(createUser, 'Create user response');
-
   // const createMovies = await prisma.movie.createMany({
   //   data: [
   //     {
@@ -51,14 +50,13 @@ async function main() {
   //   ],
   // });
   // console.log(createMovies, 'Create user response');
-
   const newUser = await prisma.user.create({
     data: {
       name: 'Shakib',
       email: 'shakib@example.com',
       password: '123456',
       watchlist: {
-        connect: [{ id: '01JYE7NJQ459PFEF9DAZAK9H6D' }],
+        connect: [{ id: '01JYM1SC6Q7YRXJ7AFFAGWV2GS' }],
       },
     },
     include: {

@@ -6,7 +6,7 @@ async function main() {
   // update user name
   const updateUser = await prisma.user.update({
     where: {
-      email: 'tariqul.dev8@gmail.com',
+      email: 'tariqul8.dev8@gmail.com',
     },
     data: {
       name: 'Tariqul Islam (Developer)',
@@ -17,11 +17,11 @@ async function main() {
   // add movie for a User
   const updateMovie = await prisma.user.update({
     where: {
-      email: 'tariqul.dev8@gmail.com',
+      email: 'tariqul8.dev8@gmail.com',
     },
     data: {
       watchlist: {
-        connect: [{ id: '01JYE7NJQ4GXGDH2MQSQ7CZZ6T' }],
+        connect: [{ id: '01JYM1SC6Q8W0FMY6TPHY0DQPZ' }],
       },
     },
   });

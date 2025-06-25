@@ -20,6 +20,9 @@ model User {
   name String
   email String @unique
   password String
+  age String?
+  district String @default("Pabna")
+  photoUrl String?
   watchlist Movie[] @relation("UserWatchList")
   review Review[]
   createdAt DateTime @default(now())
